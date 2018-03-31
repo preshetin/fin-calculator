@@ -149,10 +149,10 @@
       $( "#amount" ).on( "change paste keyup", function() {
         let amount = $(this).val();
         let podohNalog = parseInt(amount * 0.13);
-        let strahVznos = parseInt(amount * 0.1);
+        let strahVznos = parseInt(amount * 0.01);
         let contractAmount = parseInt(amount * 0.86)
         $('#podohNalog').html(podohNalog + ' BYN (13%)');
-        $('#strahVznos').html(strahVznos + ' BYN (10%)');
+        $('#strahVznos').html(strahVznos + ' BYN (1%)');
         $('#contractAmount').html(contractAmount + ' BYN');
       });
 
