@@ -69,7 +69,7 @@
             <div class="col-sm-8">
               <div class="input-group">
                 <div class="input-group-addon">BYN</div>
-                <input type="text" class="form-control" id="amount" value="100" placeholder="Amount">
+                <input type="number" class="form-control" id="amount" value="100" placeholder="Amount">
                 <div class="input-group-addon">.00</div>
               </div>
             </div>
@@ -77,19 +77,19 @@
           <div class="form-group">
             <label class="col-sm-4 control-label">Подоходный налог по договору подряда</label>
             <div class="col-sm-8">
-              <p class="form-control-static" id="podohNalog">75,58</p>
+              <p class="form-control-static" id="podohNalog"></p>
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-4 control-label">Страховые взносы по договору подряда</label>
             <div class="col-sm-8">
-              <p class="form-control-static">5,81</p>
+              <p class="form-control-static" id="strahVznos"></p>
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-4 control-label">Сумма по договору подряда</label>
+            <label class="col-sm-4 control-label" >Сумма по договору подряда</label>
             <div class="col-sm-8">
-              <p class="form-control-static">581,39</p>
+              <p class="form-control-static" id="contractAmount" style="font-size: 200%;"></p>
             </div>
           </div>
         </form>
@@ -148,9 +148,15 @@
 
       $( "#amount" ).on( "change paste keyup", function() {
         let amount = $(this).val();
-        let podohNalog = amount * 0.13;
+        let podohNalog = parseInt(amount * 0.13);
+        let strahVznos = parseInt(amount * 0.1);
+        let contractAmount = parseInt(amount * 0.86)
         $('#podohNalog').html(podohNalog + ' BYN (13%)');
+        $('#strahVznos').html(strahVznos + ' BYN (10%)');
+        $('#contractAmount').html(contractAmount + ' BYN');
       });
+
+      $('#amount').trigger("change");
 
     });
 
